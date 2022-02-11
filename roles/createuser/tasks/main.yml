@@ -1,15 +1,5 @@
 ---
 # tasks file for createuser
-- hosts: localhost
-
-  tasks:
-  - name: "create local user"
-    user:
-     name: "{{user}}"
-     generate_ssh_key: yes
-     state: present
-
-- hosts: all
 
 - name: "add group"
   group:
