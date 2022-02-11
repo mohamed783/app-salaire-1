@@ -21,13 +21,15 @@
     mysql_user:
       user=""
       state="absent"
+    ignore_errors: true
 
   - name: "Set root password"
     mysql_user:
       user={{db_user}}
-      password="{{db_password}}"
+      password="{{db_pass}}"
       host=localhost
-
+    ignore_errors: true
+    
   - name: "restart mariadb server"
     systemd:
       name: mariadb
