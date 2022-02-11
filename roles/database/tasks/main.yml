@@ -22,6 +22,7 @@
       user="{{db_user}}"
       password="{{db_pass}}"
       host=localhost
+    when: is_root_password_set.rc == 0
 
   - name: "restart mariadb server"
     systemd:
