@@ -8,17 +8,17 @@
 
     - name: create user
       user:
-            name: {{user}}
+            name: "{{user}}"
             group: ansible
             state: present
 
     - name: add ssh key
       authorized_key:
-              user: {{user}}
+              user: "{{user}}"
               state: present
               key: "{{ lookup('file', '/home/app-salaire/.ssh/id_rsa.pub') }}"
 
     - name: Ajout de app-salaire dans sudo
       template:
               src: sudo.tmpl
-              dest: /etc/sudoers.d/{{user}}
+              dest: "/etc/sudoers.d/{{user}}"
