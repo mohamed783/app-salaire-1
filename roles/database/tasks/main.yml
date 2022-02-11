@@ -17,15 +17,10 @@
       state: started
       enabled: yes
 
-  - name: "Delete anonymous users"
-    mysql_user:
-      user=""
-      state="absent"
-
   - name: "Set root password"
     mysql_user:
-      user=root
-      password="{{db_password}}"
+      user="{{db_user}}""
+      password="{{db_pass}}"
       host=localhost
 
   - name: "restart mariadb server"
