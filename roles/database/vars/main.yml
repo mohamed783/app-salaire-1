@@ -2,5 +2,9 @@ mariadb:
  - mariadb-server
  - MySQL-python
 
-db_password:
+db_host:
+ localhost
+db_user:
+ root
+db_pass:
  root
