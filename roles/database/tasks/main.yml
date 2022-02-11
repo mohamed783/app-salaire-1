@@ -17,12 +17,16 @@
       state: started
       enabled: yes
 
+  - name: "Delete anonymous users"
+    mysql_user:
+      user=""
+      state="absent"
+
   - name: "Set root password"
     mysql_user:
-      user="{{db_user}}"
-      password="{{db_pass}}"
+      user={{db_user}}
+      password="{{db_password}}"
       host=localhost
-    when: is_root_password_set.rc == 0
 
   - name: "restart mariadb server"
     systemd:
