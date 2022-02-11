@@ -19,7 +19,7 @@
 
   - name: "Set root password"
     mysql_user:
-      user="{{db_user}}""
+      user="{{db_user}}"
       password="{{db_pass}}"
       host=localhost
 
