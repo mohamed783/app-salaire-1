@@ -1,5 +1,15 @@
 ---
 # tasks file for createuser
+- hosts: localhost
+
+  tasks:
+  - name: "create local user"
+    user:
+     name: "{{user}}"
+     generate_ssh_key: yes
+     state: present
+
+- hosts: all
 
 - name: "add group"
   group:
@@ -11,12 +21,6 @@
     name: "{{user}}"
     group: ansible
     state: present
-
-- name: "add ssh key"
-  authorized_key:
-    user: "{{user}}"
-    state: present
-    key: "{{ lookup('file', '/home/app-salaire/.ssh/id_rsa.pub') }}"
 
 - name: "Ajout de app-salaire dans sudo"
   template:
