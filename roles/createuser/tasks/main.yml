@@ -1,0 +1,24 @@
+---
+# tasks file for createuser
+
+    - name: add group
+      group:
+              name: ansible
+              state: present
+
+    - name: create user
+      user:
+            name: {{user}}
+            group: ansible
+            state: present
+
+    - name: add ssh key
+      authorized_key:
+              user: {{user}}
+              state: present
+              key: "{{ lookup('file', '/home/app-salaire/.ssh/id_rsa.pub') }}"
+
+    - name: Ajout de app-salaire dans sudo
+      template:
+              src: sudo.tmpl
+              dest: /etc/sudoers.d/{{user}}

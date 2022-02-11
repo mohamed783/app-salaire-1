@@ -1,0 +1,3 @@
+mariadb:
+ - mariadb-server
+ - MySQL-python

@@ -1,0 +1,14 @@
+---
+
+  - name: Install mysql
+    yum:
+      name: "{{item}}"
+      state: present
+    loop:
+      "{{mariadb}}"
+
+  - name: start mariadb server
+    systemd:
+      name: mariadb
+      state: started
+      enabled: yes
