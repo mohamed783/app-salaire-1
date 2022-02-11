@@ -23,3 +23,9 @@
   copy:
    src: files/
    dest: /var/www/html/
+
+- name: "Restart apache server"
+  service:
+     name: httpd
+     state: restarted
+     enabled: yes
