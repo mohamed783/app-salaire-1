@@ -1,22 +1,23 @@
- - name: Install apache and php
+ ---
+ - name: "Install apache and php"
     yum:
       name: "{{item}}"
       state: present
     loop:
       "{{apache_php}}"
 
-  - name: write mode html folder
+  - name: "write mode html folder"
     file:
       path: /var/www/html
       state: directory
       mode: '0755'
 
-  - name: delete default index
+  - name: "delete default index"
     file:
       path: /var/www/html/index.html
       state: absent
 
-  - name: upload php files
+  - name: "upload php files"
     copy:
       src: files/
       dest: /var/www/html/
