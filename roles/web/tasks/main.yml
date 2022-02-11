@@ -1,5 +1,5 @@
  ---
- - name: "Install apache and php"
+  - name: "Install apache and php"
     yum:
       name: "{{item}}"
       state: present
