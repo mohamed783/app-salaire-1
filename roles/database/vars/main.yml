@@ -1,3 +1,6 @@
 mariadb:
  - mariadb-server
  - MySQL-python
+
+db_password:
+ root

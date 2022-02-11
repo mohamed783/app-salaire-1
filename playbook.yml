@@ -1,9 +1,4 @@
 ---
-  - name: create user
-    hosts: all
-    roles:
-    - createuser
-  
   - name: web server install
     hosts: all
     roles:

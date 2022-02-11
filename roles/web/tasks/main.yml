@@ -29,3 +29,15 @@
      name: httpd
      state: restarted
      enabled: yes
+
+- name: "permit traffic in default zone for https service"
+  firewalld:
+   service: http
+   permanent: yes
+   state: enabled
+
+- name: "restart and enable systemd nginx service"
+  systemd:
+   name: firewalld
+   enabled: yes
+   state: restarted

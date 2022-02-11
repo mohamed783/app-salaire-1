@@ -1,14 +1,22 @@
 ---
-
-  - name: Install mysql
+  - name: "Install mysql"
     yum:
       name: "{{item}}"
       state: present
     loop:
       "{{mariadb}}"
 
-  - name: start mariadb server
+  - name: "create mariadb client conf "
+    copy:
+     dest: /root/my.cnf
+     content: |
+      [client]
+      user=root
+      password={{db_password}}
+
+  - name: "start mariadb server"
     systemd:
       name: mariadb
       state: started
       enabled: yes
+
