@@ -1,15 +1,15 @@
 ---
- - name: create user
-   hosts: all
-   roles:
+  - name: create user
+    hosts: all
+    roles:
     - createuser
   
-- name: web server install
-   hosts: all
-   roles:
-    - web
-    
-- name: mariadb install
-  hosts: all
-  roles:
-    - database
+  - name: web server install
+    hosts: all
+    roles:
+      - web
+      
+  - name: mariadb install
+    hosts: all
+    roles:
+      - database
