@@ -6,17 +6,21 @@
     loop:
       "{{mariadb}}"
 
-  - name: "create mariadb client conf "
-    copy:
-     dest: /root/my.cnf
-     content: |
-      [client]
-      user=root
-      password={{db_password}}
-
   - name: "start mariadb server"
     systemd:
       name: mariadb
       state: started
       enabled: yes
 
+  - name: Delete anonymous users
+    mysql_user:
+      user=""
+      state="absent"
+    when: is_root_password_set.rc == 0
+
+  - name: Set root password
+    mysql_user:
+      user=root
+      password="{{db_password}}"
+      host=localhost
+    when: is_root_password_set.rc == 0
