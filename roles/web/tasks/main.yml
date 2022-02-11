@@ -1,23 +1,25 @@
- ---
-  - name: "Install apache and php"
-    yum:
-      name: "{{item}}"
-      state: present
-    loop:
-      "{{apache_php}}"
+---
+# tasks file for createuser
 
-  - name: "write mode html folder"
-    file:
-      path: /var/www/html
-      state: directory
-      mode: '0755'
+- name: "Install apache and php"
+  yum:
+   name: "{{item}}"
+   state: present
+  loop:
+   "{{apache_php}}"
 
-  - name: "delete default index"
-    file:
-      path: /var/www/html/index.html
-      state: absent
+- name: "write mode html folder"
+  file:
+   path: /var/www/html
+   state: directory
+   mode: '0755'
 
-  - name: "upload php files"
-    copy:
-      src: files/
-      dest: /var/www/html/
+- name: "delete default index"
+  file:
+   path: /var/www/html/index.html
+   state: absent
+
+- name: "upload php files"
+  copy:
+   src: files/
+   dest: /var/www/html/
