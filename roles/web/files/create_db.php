@@ -1,5 +1,5 @@
 <?php
-   $dbhost = 'mysql';
+   $dbhost = 'localhost';
    $dbuser = 'root';
    $dbpass = 'root';
    $conn = mysql_connect($dbhost, $dbuser, $dbpass);
