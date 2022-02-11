@@ -7,9 +7,9 @@
       "{{mariadb}}"
 
   - name: "copy bdd conf template"
-  template:
-   src: "template/bddconf.php.j2"
-   dest: /var/www/html/bddconf.php
+    template:
+     src: "template/bddconf.php.j2"
+     dest: /var/www/html/bddconf.php
 
   - name: "start mariadb server"
     systemd:
